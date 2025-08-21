@@ -1,97 +1,101 @@
 public class Queue<E> {
-    // Capacidad del arreglo
-    public static final int CAPACITY = 1000;
+    private LinkedList<E> lista;
 
-    // Lugar para guardar los valores
-    private E[] data;
-
-    // La cantidad de elementos en la cola
-    private int size = 0;
-
-    // Crea un nuevo objeto tipo Cola
     public Queue() {
-        this.data = (E[]) new Object[this.CAPACITY];
+        this.lista = new LinkedList<>(false, false); // Cola simple no circular
     }
 
-    // Regresa TRUE si la cola está vacía
     public boolean isEmpty() {
-        return (this.size == 0);
+        return lista.getCabeza() == null;
     }
 
-    // Regresa el tamaño de la cola
+    public boolean isFull() {
+        // Con LinkedList, teóricamente nunca se llena (hasta que la memoria se agote)
+        return false;
+    }
+
     public int size() {
-        return (this.size);
+        int count = 0;
+        Nodo<E> actual = lista.getCabeza();
+        while (actual != null) {
+            count++;
+            actual = actual.getSiguiente();
+        }
+        return count;
     }
 
-    // Agrega un elemento al final de la cola
     public void push(E value) {
-        this.data[this.size] = value;
-        this.size++;
+        // Enqueue: agregar al final de la lista
+        lista.insertar(value);
     }
 
-    // Saca el primer elemento de la cola
     public E pop() throws Exception {
-        E result = null;
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             throw new Exception("La cola está vacía");
         }
 
-        result = this.data[0];
+        // Dequeue: remover el primer elemento (FIFO)
+        E resultado = lista.getCabeza().getDato();
 
-        // Movemos los elementos hacia adelante
-        for (int i = 0; i < this.size - 1; i++) {
-            data[i] = data[i + 1];
+        // Eliminar el primer nodo
+        if (lista.getCabeza().getSiguiente() == null) {
+            // Solo había un elemento
+            lista = new LinkedList<>(false, false);
+        } else {
+            lista.setCabeza(lista.getCabeza().getSiguiente());
         }
 
-        this.data[this.size] = null; // ayuda al Garbage Collector
-        this.size--;
-
-        return result;
+        return resultado;
     }
 
-    // Muestra el primer elemento de la cola sin eliminarlo
     public E peek() throws Exception {
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             throw new Exception("La Cola está vacía");
         }
-        return this.data[0];
+        return lista.getCabeza().getDato();
     }
 
-    // Método show para imprimir la cola
+    public void clear() {
+        lista = new LinkedList<>(false, false);
+    }
+
     public void show() {
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             System.out.println("La cola está vacía");
         } else {
             System.out.print("Cola: ");
-            for (int i = 0; i < this.size; i++) {
-                System.out.print(this.data[i]);
-                if (i < this.size - 1) {
-                    System.out.print(" <- "); // muestra el orden
+            Nodo<E> actual = lista.getCabeza();
+            while (actual != null) {
+                System.out.print(actual.getDato());
+                if (actual.getSiguiente() != null) {
+                    System.out.print(" <- ");
                 }
+                actual = actual.getSiguiente();
             }
             System.out.println();
         }
     }
 
-    // Método main para probar la clase Queue
-    public static void main(String[] args) {
-        try {
-            Queue<Integer> cola = new Queue<>();
-
-            cola.push(10);
-            cola.push(20);
-            cola.push(30);
-
-            cola.show(); // Cola: 10 <- 20 <- 30
-
-            System.out.println("Peek: " + cola.peek()); // Peek: 10
-
-            System.out.println("Pop: " + cola.pop());   // Pop: 10
-
-            cola.show(); // Cola: 20 <- 30
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "Cola vacía";
         }
+
+        StringBuilder sb = new StringBuilder("Cola: ");
+        Nodo<E> actual = lista.getCabeza();
+        while (actual != null) {
+            sb.append(actual.getDato());
+            if (actual.getSiguiente() != null) {
+                sb.append(" <- ");
+            }
+            actual = actual.getSiguiente();
+        }
+        return sb.toString();
+    }
+
+    // Método auxiliar para obtener la cabeza (útil para testing)
+    public Nodo<E> getFront() {
+        return lista.getCabeza();
     }
 }

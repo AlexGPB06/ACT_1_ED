@@ -101,6 +101,10 @@ public class LinkedList<T> {
         return false;
     }
 
+    public void setCabeza(Nodo<T> cabeza) {
+        this.cabeza = cabeza;
+    }
+
     public void mostrar() {
         if (cabeza == null) {
             System.out.println("La lista está vacía.");
