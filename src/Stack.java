@@ -1,3 +1,5 @@
+// Alejandro Garcia Pelayo Banda
+// 21/08/2025
 public class Stack<E> {
     private LinkedList<E> lista;
 

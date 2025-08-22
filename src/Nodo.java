@@ -1,5 +1,5 @@
-// Alejandro Garcia Pleayp Banda
-// 16/08/2025
+// Alejandro Garcia Pelayo Banda
+// 21/08/2025
 
 public class Nodo<T> {
     private T dato;

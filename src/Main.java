@@ -1,5 +1,5 @@
-// Alejandro Garcia Pleayp Banda
-// 16/08/2025
+// Alejandro Garcia Pelayo Banda
+// 21/08/2025
 import java.util.Scanner;
 import java.lang.System;
 
@@ -9,7 +9,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean ejecutando = true;
         System.setProperty("file.encoding", "UTF-8");
-
 
         while (ejecutando) {
             mostrarMenuPrincipal();
@@ -36,7 +35,6 @@ public class Main {
         }
         scanner.close();
     }
-
     private static void mostrarMenuPrincipal() {
         System.out.println("\n=== SIMULADOR OS ===");
         System.out.println("1. EJECUTANDO COMANDOS ---");

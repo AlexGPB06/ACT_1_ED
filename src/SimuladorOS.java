@@ -1,3 +1,5 @@
+// Alejandro Garcia Pelayo Banda
+// 21/08/2025
 import java.util.Scanner;
 
 public class SimuladorOS {
