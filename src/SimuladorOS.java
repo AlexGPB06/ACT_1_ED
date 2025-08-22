@@ -10,7 +10,7 @@ public class SimuladorOS {
     }
 
     public void ejecutarComandos(Scanner scanner) {
-        System.out.println("\n--- EJECUTANDO COMANDOS (PUSH) ---");
+        System.out.println("\n--- EJECUTANDO COMANDOS ---");
         boolean continuar = true;
 
         while (continuar) {
@@ -19,7 +19,7 @@ public class SimuladorOS {
 
             try {
                 pilaComandos.push(comando);
-                System.out.println("✓ Comando '" + comando + "' PUSH ejecutado exitosamente.");
+                System.out.println("✓ Comando '" + comando + "' Pila ejecutado exitosamente.");
                 System.out.println("Tamaño actual de la pila: " + pilaComandos.size());
 
                 // Preguntar y validar respuesta
@@ -41,14 +41,14 @@ public class SimuladorOS {
                 }
 
             } catch (Exception e) {
-                System.out.println("✗ Error al ejecutar PUSH: " + e.getMessage());
+                System.out.println("✗ Error al ejecutar Pila: " + e.getMessage());
                 continuar = false;
             }
         }
     }
 
     public void agregarProcesos(Scanner scanner) {
-        System.out.println("\n--- AGREGANDO PROCESOS (ENQUEUE) ---");
+        System.out.println("\n--- AGREGANDO PROCESOS (fila) ---");
         boolean continuar = true;
 
         while (continuar) {
@@ -57,8 +57,8 @@ public class SimuladorOS {
 
             try {
                 colaProcesos.push(proceso);
-                System.out.println("✓ Proceso '" + proceso + "' ENQUEUE agregado exitosamente.");
-                System.out.println("Tamaño actual de la cola: " + colaProcesos.size());
+                System.out.println("✓ Proceso '" + proceso + "' Fila agregado exitosamente.");
+                System.out.println("Tamaño actual de la Fila: " + colaProcesos.size());
 
                 // Preguntar y validar respuesta
                 boolean respuestaValida = false;
@@ -79,7 +79,7 @@ public class SimuladorOS {
                 }
 
             } catch (Exception e) {
-                System.out.println("Error al realizar ENQUEUE: " + e.getMessage());
+                System.out.println("Error al realizar la fila: " + e.getMessage());
                 continuar = false;
             }
         }
@@ -88,30 +88,12 @@ public class SimuladorOS {
     // Método modificado para solo mostrar las listas
     public void operacionesHistorial(Scanner scanner) throws Exception {
         System.out.println("\n--- HISTORIAL DE OPERACIONES ---");
-        System.out.println("Mostrando estado actual de la Pila de Comandos y la Cola de Procesos.");
+        System.out.println("Mostrando estado actual de la Pila de Comandos y la Fila de Procesos.");
 
         MostarEstadoPila();
         mostrarEstadoCola();
     }
 
-    private void peekComando() {
-        try {
-            String ultimoComando = pilaComandos.peek();
-            System.out.println("✓ PEEK exitoso - Último comando: " + ultimoComando);
-        } catch (Exception e) {
-            System.out.println("✗ PEEK fallido - No hay comandos en el historial.");
-        }
-    }
-
-    private void popComando() {
-        try {
-            String comandoDeshecho = pilaComandos.pop();
-            System.out.println("✓ POP exitoso - Comando deshecho: " + comandoDeshecho);
-            System.out.println("Nuevo tamaño de pila: " + pilaComandos.size());
-        } catch (Exception e) {
-            System.out.println("✗ POP fallido - No hay comandos para deshacer.");
-        }
-    }
 
     private void MostarEstadoPila() {
         if (pilaComandos.isEmpty()) {
@@ -158,7 +140,7 @@ public class SimuladorOS {
     }
 
     public void procesarComandos() {
-        System.out.println("\n--- PROCESANDO COMANDOS (STACK OPERATIONS) ---");
+        System.out.println("\n--- PROCESANDO COMANDOS ---");
 
         if (pilaComandos.isEmpty()) {
             System.out.println("No hay comandos para procesar.");
@@ -182,7 +164,7 @@ public class SimuladorOS {
                 // Preguntar si desea procesar el siguiente comando
                 boolean respuestaValida = false;
                 while (!respuestaValida) {
-                    System.out.print("¿Desea procesar el siguiente comando? (si/no): ");
+                    System.out.print("¿Desea procesar el siguiente comando? (si/no) o (s/n): ");
                     String respuesta = scanner.nextLine().trim().toLowerCase();
 
                     if (respuesta.equals("si") || respuesta.equals("sí") || respuesta.equals("s")) {
@@ -208,7 +190,7 @@ public class SimuladorOS {
                         System.out.println("Procesamiento interrumpido por el usuario.");
                         System.out.println("Comandos pendientes: " + pilaComandos.size());
                     } else {
-                        System.out.println("Respuesta no válida. Por favor ingrese 'si' o 'no'.");
+                        System.out.println("Respuesta no válida. Por favor ingrese 'si' o 'no', (s/n).");
                     }
                 }
 
@@ -221,10 +203,10 @@ public class SimuladorOS {
     }
 
     public void realizarProcesos() {
-        System.out.println("\n--- REALIZANDO PROCESOS (QUEUE OPERATIONS) ---");
+        System.out.println("\n--- REALIZANDO PROCESOS  ---");
 
         if (colaProcesos.isEmpty()) {
-            System.out.println("No hay procesos en la cola.");
+            System.out.println("No hay procesos en la Fila.");
             return;
         }
 
@@ -233,8 +215,8 @@ public class SimuladorOS {
         int contador = 1;
 
         try {
-            System.out.println("Tamaño inicial de la cola: " + colaProcesos.size());
-            System.out.println("FRONT inicial de la cola: " + colaProcesos.peek());
+            System.out.println("Tamaño inicial de la Fila: " + colaProcesos.size());
+            System.out.println("FRONT inicial de la Fila: " + colaProcesos.peek());
 
             while (!colaProcesos.isEmpty() && continuar) {
                 // Mostrar el estado actual
@@ -245,7 +227,7 @@ public class SimuladorOS {
                 // Preguntar si desea procesar el siguiente proceso
                 boolean respuestaValida = false;
                 while (!respuestaValida) {
-                    System.out.print("¿Desea procesar el siguiente proceso? (si/no): ");
+                    System.out.print("¿Desea procesar el siguiente proceso? (si/no) o (s/n): ");
                     String respuesta = scanner.nextLine().trim().toLowerCase();
 
                     if (respuesta.equals("si") || respuesta.equals("sí") || respuesta.equals("s")) {
@@ -253,7 +235,7 @@ public class SimuladorOS {
 
                         // Procesar el proceso
                         String proceso = colaProcesos.pop();
-                        System.out.println(contador + ". Ejecutando DEQUEUE: " + proceso);
+                        System.out.println(contador + ". Ejecutando Fila: " + proceso);
                         System.out.println("✓ Proceso ejecutado exitosamente");
                         contador++;
 
@@ -271,7 +253,7 @@ public class SimuladorOS {
                         System.out.println("Ejecución interrumpida por el usuario.");
                         System.out.println("Procesos pendientes: " + colaProcesos.size());
                     } else {
-                        System.out.println("Respuesta no válida. Por favor ingrese 'si' o 'no'.");
+                        System.out.println("Respuesta no válida. Por favor ingrese 'si' o 'no', (s/n).");
                     }
                 }
 
@@ -289,7 +271,7 @@ public class SimuladorOS {
             return;
         }
 
-        System.out.println("\n--- ESTADO COMPLETO DE LA COLA ---");
+        System.out.println("\n--- ESTADO COMPLETO DE LA FILA ---");
         System.out.println("+---------------------------------+");
         System.out.println("|              Fila               |");
         System.out.println("+---------------------------------+");
