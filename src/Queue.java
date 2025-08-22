@@ -31,7 +31,7 @@ public class Queue<E> {
 
     public E pop() throws Exception {
         if (isEmpty()) {
-            throw new Exception("La cola está vacía");
+            throw new Exception("La Fila está vacía");
         }
 
         // Dequeue: remover el primer elemento (FIFO)
@@ -61,9 +61,9 @@ public class Queue<E> {
 
     public void show() {
         if (isEmpty()) {
-            System.out.println("La cola está vacía");
+            System.out.println("La Fila está vacía");
         } else {
-            System.out.print("Cola: ");
+            System.out.print("Fila: ");
             Nodo<E> actual = lista.getCabeza();
             while (actual != null) {
                 System.out.print(actual.getDato());
@@ -79,10 +79,10 @@ public class Queue<E> {
     @Override
     public String toString() {
         if (isEmpty()) {
-            return "Cola vacía";
+            return "Fila vacía";
         }
 
-        StringBuilder sb = new StringBuilder("Cola: ");
+        StringBuilder sb = new StringBuilder("Fila: ");
         Nodo<E> actual = lista.getCabeza();
         while (actual != null) {
             sb.append(actual.getDato());
@@ -92,10 +92,5 @@ public class Queue<E> {
             actual = actual.getSiguiente();
         }
         return sb.toString();
-    }
-
-    // Método auxiliar para obtener la cabeza (útil para testing)
-    public Nodo<E> getFront() {
-        return lista.getCabeza();
     }
 }

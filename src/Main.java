@@ -1,13 +1,15 @@
 // Alejandro Garcia Pleayp Banda
 // 16/08/2025
-
 import java.util.Scanner;
+import java.lang.System;
 
 public class Main {
     public static void main(String[] args) {
         SimuladorOS simulador = new SimuladorOS();
         Scanner scanner = new Scanner(System.in);
         boolean ejecutando = true;
+        System.setProperty("file.encoding", "UTF-8");
+
 
         while (ejecutando) {
             mostrarMenuPrincipal();
@@ -36,12 +38,12 @@ public class Main {
     }
 
     private static void mostrarMenuPrincipal() {
-        System.out.println("\n=== SIMULADOR DE SISTEMA OPERATIVO ===");
-        System.out.println("1. EJECUTANDO COMANDOS (PUSH) ---");
-        System.out.println("2. AGREGANDO PROCESOS (ENQUEUE) ---");
-        System.out.println("3. OPERACIONES DE HISTORIAL (POP/PEEK) ---");
-        System.out.println("4. PROCESANDO COMANDOS (STACK OPERATIONS) ---");
-        System.out.println("5. REALIZANDO PROCESOS (QUEUE OPERATIONS) ---");
+        System.out.println("\n=== SIMULADOR OS ===");
+        System.out.println("1. EJECUTANDO COMANDOS ---");
+        System.out.println("2. AGREGANDO PROCESOS ---");
+        System.out.println("3. OPERACIONES DE HISTORIAL ---");
+        System.out.println("4. PROCESANDO COMANDOS ---");
+        System.out.println("5. REALIZANDO PROCESOS ---");
         System.out.println("6. SALIR DEL SIMULADOR ---");
         System.out.print("\nEscriba el número de la acción que desea realizar: ");
     }

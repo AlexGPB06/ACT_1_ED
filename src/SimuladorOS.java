@@ -79,7 +79,7 @@ public class SimuladorOS {
                 }
 
             } catch (Exception e) {
-                System.out.println("✗ Error al realizar ENQUEUE: " + e.getMessage());
+                System.out.println("Error al realizar ENQUEUE: " + e.getMessage());
                 continuar = false;
             }
         }
@@ -120,9 +120,9 @@ public class SimuladorOS {
         }
 
         System.out.println("\n--- HISTORIAL DE COMANDOS (STACK) ---");
-        System.out.println("┌─────────────────────────────────────────────┐");
-        System.out.println("│                   PILA                      │");
-        System.out.println("├─────────────────────────────────────────────┤");
+        System.out.println("+---------------------------------+");
+        System.out.println("|              PILA               |");
+        System.out.println("+---------------------------------+");
 
         Stack<String> tempStack = new Stack<>();
 
@@ -147,7 +147,7 @@ public class SimuladorOS {
             System.out.println("Error al mostrar el estado de la pila: " + e.getMessage());
         }
 
-        System.out.println("└─────────────────────────────────────────────┘");
+        System.out.println("--------------------------------------------------");
 
         // Mostrar porcentaje de llenado
         int capacidad = 1000;
@@ -290,9 +290,9 @@ public class SimuladorOS {
         }
 
         System.out.println("\n--- ESTADO COMPLETO DE LA COLA ---");
-        System.out.println("┌─────────────────────────────────────────────┐");
-        System.out.println("│                   COLA                      │");
-        System.out.println("├─────────────────────────────────────────────┤");
+        System.out.println("+---------------------------------+");
+        System.out.println("|              Fila               |");
+        System.out.println("+---------------------------------+");
 
         Queue<String> tempQueue = new Queue<>();
         int originalSize = colaProcesos.size();
@@ -311,17 +311,17 @@ public class SimuladorOS {
             }
 
         } catch (Exception e) {
-            System.out.println("Error al mostrar el estado de la cola: " + e.getMessage());
+            System.out.println("Error al mostrar el estado de la Fila: " + e.getMessage());
         }
 
-        System.out.println("└─────────────────────────────────────────────┘");
+        System.out.println("------------------------------------------------------");
 
         // Mostrar porcentaje de llenado
         int capacidad = 1000;
         int usados = colaProcesos.size();
         int porcentaje = (usados * 100) / capacidad;
 
-        mostrarBarraProgreso(porcentaje, usados, capacidad, "COLA");
+        mostrarBarraProgreso(porcentaje, usados, capacidad, "Fila");
     }
 
     private void mostrarBarraProgreso(int porcentaje, int usados, int capacidad, String nombre) {
