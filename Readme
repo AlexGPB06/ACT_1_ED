@@ -1,1 +1,3 @@
 Para ejecutar el proyecto, primero descárgalo desde GitHub, luego abre tu terminal, navega hasta la carpeta src del proyecto y escribe el comando java Main.java para iniciar la aplicación.
+
+El programa implementa 2 estructuras: la pila de comandos (LIFO)donde se muestra el historial de comandos, mientras que la fila de procesos (FIFO) ejecuta procesos en orden Ambas estructuras demostraron capacidad para manejar hasta 1000 elementos simultáneamente sin presentar fallos.
